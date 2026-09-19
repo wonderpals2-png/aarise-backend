@@ -101,3 +101,41 @@ class AlertOut(BaseModel):
 
 class DevicePairIn(BaseModel):
     device_id: str
+
+
+class RideEstimateIn(BaseModel):
+    pickup_lat: float
+    pickup_lng: float
+    drop_lat: float
+    drop_lng: float
+
+
+class RideCreateIn(RideEstimateIn):
+    pickup_label: str
+    drop_label: str
+
+
+class RideEstimateOut(BaseModel):
+    distance_km: float
+    est_fare: int
+
+
+class RideOut(BaseModel):
+    id: str
+    status: str
+    pickup_lat: float
+    pickup_lng: float
+    pickup_label: str
+    drop_lat: float
+    drop_lng: float
+    drop_label: str
+    distance_km: float
+    est_fare: int
+    driver_name: Optional[str] = None
+    vehicle_model: Optional[str] = None
+    vehicle_color: Optional[str] = None
+    plate: Optional[str] = None
+    driver_lat: Optional[float] = None
+    driver_lng: Optional[float] = None
+    eta_sec: Optional[int] = None
+    otp: Optional[str] = None

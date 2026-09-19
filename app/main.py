@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from . import models
 from .database import engine
-from .routers import auth_router, contacts_router, location_router, alerts_router
+from .routers import auth_router, contacts_router, location_router, alerts_router, ride_router
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -24,6 +24,7 @@ app.include_router(auth_router.router)
 app.include_router(contacts_router.router)
 app.include_router(location_router.router)
 app.include_router(alerts_router.router)
+app.include_router(ride_router.router)
 
 
 @app.get("/health")

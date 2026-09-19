@@ -67,3 +67,24 @@ class Alert(Base):
     resolved_at = Column(DateTime, nullable=True)
 
     owner = relationship("User", back_populates="alerts")
+
+
+class Ride(Base):
+    __tablename__ = "rides"
+
+    id = Column(String, primary_key=True, default=gen_id)
+    rider_id = Column(String, ForeignKey("users.id"), nullable=False)
+    pickup_lat = Column(Float, nullable=False)
+    pickup_lng = Column(Float, nullable=False)
+    pickup_label = Column(String, nullable=False)
+    drop_lat = Column(Float, nullable=False)
+    drop_lng = Column(Float, nullable=False)
+    drop_label = Column(String, nullable=False)
+    distance_km = Column(Float, nullable=False)
+    est_fare = Column(Integer, nullable=False)
+    otp = Column(String, nullable=False)
+    demo_driver_idx = Column(Integer, nullable=False)
+    bearing_deg = Column(Integer, nullable=False)
+    requested_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False, index=True)
+    cancelled_at = Column(DateTime, nullable=True)
+    completed_at = Column(DateTime, nullable=True)
